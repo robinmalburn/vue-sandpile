@@ -1,0 +1,14 @@
+{
+  "name": "sandpile.js",
+  "version": "0.0.1",
+  "description": "A javascript implementation of the Abelian sandpile model.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "sandpile"
+  ],
+  "author": "Robin Malburn <robin.malburn@googlemail.com>",
+  "license": "MIT"
+}
