@@ -1,0 +1,56 @@
+@import 'buttons.css';
+@import 'responsive.css';
+
+body {
+    background-color: #ECF1EF;
+    font-family: 'Inconsolata', monospace;
+    overflow-y: scroll;
+    overflow-x: auto;
+}
+
+.inline-container {
+    display: inline-block;
+}
+
+#container{
+    display: grid;
+    grid-template-areas: 'header'
+                         'controls'
+                         'content';
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    grid-gap: 18px 32px;
+}
+
+#header{
+    grid-area: header;
+}
+
+#controls{
+    grid-area: controls;
+    z-index: 2;
+}
+
+#content{
+    grid-area: content;
+    z-index: 1;
+    max-width: 90vw;
+    margin: auto;
+    box-sizing: border-box;
+    padding: 0 0 12px 0;
+    overflow-x: auto;
+}
+
+@media screen and (min-width: 640px) {
+    #container{
+        grid-template-areas: 'header header'
+                             'controls content';
+        grid-template-columns: 300px 1fr;
+    }
+
+    #content{
+        max-width: calc(100vw - 300px);
+        padding: 0;
+        margin: 0;
+    }
+}
