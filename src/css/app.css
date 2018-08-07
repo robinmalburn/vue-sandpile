@@ -1,11 +1,36 @@
 @import 'buttons.css';
+@import 'forms.css';
 @import 'responsive.css';
 
+:root{
+    --brand-primary-hue: 53;
+    --brand-primary-saturation: 90%;
+    --brand-primary-lightness: 49%;
+    --brand-primary: hsl(var(--brand-primary-hue), var(--brand-primary-saturation), var(--brand-primary-lightness));
+
+    --brand-secondary-hue: 251;
+    --brand-secondary-saturation: 5%;
+    --brand-secondary-lightness: 60%;
+    --brand-secondary: hsl(var(--brand-secondary-hue), var(--brand-secondary-saturation), var(--brand-secondary-lightness));
+
+    --brand-tertiary-hue: 0;
+    --brand-tertiary-saturation: 0%;
+    --brand-tertiary-lightness: 13%;
+    --brand-tertiary: hsl(var(--brand-tertiary-hue), var(--brand-tertiary-saturation), var(--brand-tertiary-lightness));
+
+    --text-color-hue: 0;
+    --text-color-saturation: 0%;
+    --text-color-lightness: 93%;
+    --text-color: hsl(var(--text-color-hue), var(--text-color-saturation), var(--text-color-lightness));
+}
+
 body {
-    background-color: #ECF1EF;
+    background-color: var(--brand-tertiary);
     font-family: 'Inconsolata', monospace;
+    color: var(--text-color);
     overflow-y: scroll;
     overflow-x: auto;
+    margin: 0;
 }
 
 .inline-container {
@@ -13,43 +38,61 @@ body {
 }
 
 #container{
+    --container-padding: 24px;
+    --container-margin-md: 18px;
+    --controls-width-md: 250px;
+
     display: grid;
     grid-template-areas: 'header'
                          'controls'
                          'content';
     grid-template-columns: 100%;
-    grid-template-rows: auto;
-    grid-gap: 18px 32px;
+    grid-template-rows: 4em auto 1fr;
+    grid-gap: 5vh 5vw;
+    background-color: var(--brand-tertiary);
+    transition: margin 0.25s ease;
+    padding: var(--container-padding);
+    min-height: calc(100vh - (var(--container-margin-md)*2) - (var(--container-padding)*2));
 }
 
 #header{
     grid-area: header;
+    transition: none;
 }
 
 #controls{
+    transition: none;
     grid-area: controls;
     z-index: 2;
 }
 
 #content{
+    transition: none;
     grid-area: content;
     z-index: 1;
-    max-width: 90vw;
-    margin: auto;
+    max-width: calc(90vw - var(--container-padding));
+    height: 100%;
+    margin: 0 auto;
     box-sizing: border-box;
     padding: 0 0 12px 0;
     overflow-x: auto;
 }
 
 @media screen and (min-width: 640px) {
+    body {
+        background-color: var(--brand-secondary);
+    }
+
     #container{
         grid-template-areas: 'header header'
                              'controls content';
-        grid-template-columns: 300px 1fr;
+        grid-template-columns: var(--controls-width-md) 1fr;
+        margin: var(--container-margin-md);
+        box-shadow: 5px 5px 5px 0px hsl(var(--brand-tertiary-hue), var(--brand-tertiary-saturation), 6%);
     }
 
     #content{
-        max-width: calc(100vw - 300px);
+        max-width: calc(100vw - var(--controls-width-md));
         padding: 0;
         margin: 0;
     }

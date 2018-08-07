@@ -1,0 +1,17 @@
+fieldset.control-group{
+    --fieldset-bg: hsl(var(--brand-secondary-hue), var(--brand-secondary-saturation), 70%);
+    --fieldset-border: 1px solid var(--brand-primary);
+    --fieldset-margin: 18px auto;
+
+    background-color: var(--fieldset-bg);
+    color: var(--brand-tertiary);
+    border: var(--fieldset-border);
+    border-radius: 2px;
+    margin: var(--fieldset-margin)
+}
+
+fieldset.control-group legend{
+    color: var(--text-color);
+    text-shadow: 0 0 2px var(--brand-tertiary);
+    font-weight: 600;
+}

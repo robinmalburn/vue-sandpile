@@ -1,5 +1,5 @@
 <template>
-    <fieldset>
+    <fieldset class="control-group">
         <legend>{{legend}}</legend>
         <slot />
         <div v-if="canReset">
