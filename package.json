@@ -20,7 +20,6 @@
     "author": "Robin Malburn <robin.malburn@googlemail.com>",
     "license": "MIT",
     "dependencies": {
-        "npm": "^6.2.0",
         "vue": "^2.5.16",
         "vue-color": "^2.4.6",
         "vuex": "^3.0.1"
