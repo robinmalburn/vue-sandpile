@@ -18,8 +18,9 @@ module.exports = {
         contentBase: './dist',
         host: '0.0.0.0',
         open: true,
-        inline: true
-    },
+        inline: true,
+        useLocalIp: true,
+    },  
     module:{
         rules: [
             {
