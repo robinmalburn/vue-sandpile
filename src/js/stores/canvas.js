@@ -4,11 +4,16 @@ const DIMENSIONS = {
     default: 325,
 };
 
+const RESOLUTION = {
+    min: 5,
+    max: 15,
+    default: 5,
+}
 
 const INITIAL_STATE = {
     width: DIMENSIONS.default,
     height: DIMENSIONS.default,
-    resolution: 5,
+    resolution: RESOLUTION.default,
 };
 
 const state = () => ({
@@ -65,6 +70,8 @@ const getters = {
 
         return maxHeight;
     },
+    minResolution: (state) => RESOLUTION.min,
+    maxResolution: (state) => RESOLUTION.max,
 }
 
 export default {

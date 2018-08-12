@@ -5,7 +5,7 @@
                 <label>Resolution ({{resolution}}px <span v-html="'&#215;'"></span> {{resolution}}px)</label>
             </div>
             <div>
-                <input type="range" :value="resolution" @input="setResolution($event.target.value)" min="5" max="15" step="1"/>
+                <input type="range" :value="resolution" @input="setResolution($event.target.value)" :min="minResolution" :max="maxResolution" step="1"/>
             </div>
         </div>
         <div>
@@ -42,6 +42,8 @@ export default {
             "maxWidth",
             "minHeight",
             "maxHeight",
+            "minResolution",
+            "maxResolution",
             "cols",
             "rows"
         ]),

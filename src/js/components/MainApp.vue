@@ -1,7 +1,9 @@
 <template>
     <div id="container">
 
-        <h1 id="header">Abelian Sandpile</h1>
+        <header id="header">
+            <h1>Abelian Sandpile</h1>
+        </header>
 
         <aside id="controls">
             <div>
@@ -17,9 +19,8 @@
                 </button>
             </div>
         
-            <MenuCollapsible class="display-sm">
+            <MenuCollapsible class="display-sm hamburger-menu">
                 <ControlGroupSand @clear="clear" />
-                <ControlGroupHeatmap />
                 <ControlGroupCanvas />
             </MenuCollapsible>
 
@@ -30,7 +31,7 @@
             </div>
         </aside>
 
-        <section id="content">
+        <section id="content" ref="content">
             <CanvasRoot
                 :width="width"
                 :height="height"
@@ -65,6 +66,8 @@ import MenuCollapsible from "./MenuCollapsible.vue";
 import { pixelToCoord, coordToPixel } from "../utilities.js";
 import { mapState, mapGetters, mapMutations } from "vuex";
 
+let onResizeTimerId = undefined;
+
 export default {
   components: {
     ButtonToggle,
@@ -95,13 +98,15 @@ export default {
         "maxWidth",
         "minHeight",
         "maxHeight",
+        "minResolution",
+        "maxResolution",
         "cols",
         "rows"
     ]),
     ...mapState("sand", ["baseSand", "startingSand", "sand"]),
   },
   methods: {
-    ...mapMutations("canvas", ["setHeight", "setWidth"]),
+    ...mapMutations("canvas", ["setHeight", "setWidth", "setResolution"]),
     ...mapMutations("sand", ["setSand", "updateSand"]),
     constrainCanvas(grow) {
         const amount = grow ? this.resolution : -this.resolution;
@@ -158,7 +163,31 @@ export default {
 
       this.updateSand({ idx: middle, amount: this.startingSand });
     },
+    optimiseCanvas() {
+        const {width, height} = this.$refs.content.getBoundingClientRect();
+
+        const dimension = Math.floor(Math.min(width, height));
+
+        let resolution = Math.round(0.0125 * dimension);
+        resolution = Math.min(resolution, this.maxResolution);
+        resolution = Math.max(resolution, this.minResolution);
+
+        this.setWidth(dimension);
+        this.setHeight(dimension);
+        this.setResolution(resolution);
+    },
+    onResize() {
+        clearTimeout(onResizeTimerId);
+        onResizeTimerId = setTimeout(
+            () => {
+               this.optimiseCanvas()
+            },
+            100
+        );
+    },
     $_setUp() {
+      window.addEventListener('resize', this.onResize);
+      this.optimiseCanvas();
       this.reset();
     },
     $_update() {
@@ -256,6 +285,15 @@ export default {
 
       this.$_loop();
     });
+  },
+  beforeDestroy() {
+      window.removeEventListener('resize', this.onResize);
   }
 };
 </script>
+
+<style scoped>
+    .hamburger-menu {
+        margin: 12px auto;
+    }
+</style>
