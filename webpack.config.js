@@ -46,7 +46,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin([DIST_DIR]),
         new HtmlWebpackPlugin({
-            title: 'Sandpile.js',
+            title: 'Vue Sandpile',
             template: path.resolve(__dirname, 'src/index.html')
         }),
         new CopyWebpackPlugin([
