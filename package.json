@@ -1,6 +1,6 @@
 {
     "name": "vue-sandpile",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "A javascript implementation of the Abelian sandpile model using Canvas, Vue and Vuex.",
     "repository": {
         "type": "git",
