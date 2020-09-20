@@ -49,12 +49,19 @@ module.exports = {
             title: 'Vue Sandpile',
             template: path.resolve(__dirname, 'src/index.html')
         }),
-        new CopyWebpackPlugin([
-            '*.png',
-            '*.ico',
-        ], {
-            context: path.resolve(__dirname, 'src'),
-            to: DIST_DIR,
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    'from': '*.png',
+                    'to': DIST_DIR,
+                    'context': path.resolve(__dirname, 'src'),
+                },
+                {
+                    'from': '*.ico',
+                    'to': DIST_DIR,
+                    'context': path.resolve(__dirname, 'src'),
+                },
+            ]
         }),
         new VueLoaderPlugin()
     ],
