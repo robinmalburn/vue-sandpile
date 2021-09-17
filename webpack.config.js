@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const DIST_DIR = path.resolve(__dirname, 'dist');
@@ -44,7 +44,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new CleanWebpackPlugin([DIST_DIR]),
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             title: 'Vue Sandpile',
             template: path.resolve(__dirname, 'src/index.html')
