@@ -14,12 +14,8 @@ module.exports = {
     },
     devtool: 'inline-source-map',
     devServer: {
-        noInfo: true,
-        contentBase: './dist',
-        host: '0.0.0.0',
+        host: 'local-ip',
         open: true,
-        inline: true,
-        useLocalIp: true,
     },  
     module:{
         rules: [
