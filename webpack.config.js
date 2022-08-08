@@ -62,6 +62,7 @@ module.exports = {
         new VueLoaderPlugin()
     ],
     resolve: {
+        extensions: ['.vue', '.js'],
         alias: {
             'vue$': 'vue/dist/vue.runtime.esm.js',
         }
