@@ -26,7 +26,7 @@
 
             <div class="display-md">
                 <ControlGroupSand @clear="clear" />
-                <ControlGroupHeatmap />
+                <ControlGroupHeatMap />
                 <ControlGroupCanvas />
             </div>
         </aside>
@@ -60,7 +60,7 @@ import ButtonToggle from "./ButtonToggle.vue";
 import CanvasRoot from "./CanvasRoot.vue";
 import CanvasGridHeatMap from "./CanvasGridHeatMap.vue";
 import ControlGroupSand from "./ControlGroupSand.vue";
-import ControlGroupHeatmap from "./ControlGroupHeatmap.vue";
+import ControlGroupHeatMap from "./ControlGroupHeatMap.vue";
 import ControlGroupCanvas from "./ControlGroupCanvas.vue";
 import MenuCollapsible from "./MenuCollapsible.vue";
 import { pixelToCoord, coordToPixel } from "../utilities.js";
@@ -74,7 +74,7 @@ export default {
     CanvasRoot,
     CanvasGridHeatMap,
     ControlGroupSand,
-    ControlGroupHeatmap,
+    ControlGroupHeatMap,
     ControlGroupCanvas,
     MenuCollapsible,
   },
