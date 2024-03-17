@@ -1,5 +1,5 @@
 <script>
-    import { pixelToCoord, coordToPixel } from '../utilities.js';
+    import { pixelToCoord } from '../utilities.js';
 
     export default {
         inject: ['provider'],

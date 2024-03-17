@@ -200,7 +200,7 @@ export default {
 
         this.updateSand({
           idx,
-          amount: (this.sand[idx] += this.interactingAmount)
+          amount: (this.sand[idx] + this.interactingAmount)
         });
       }
 
@@ -286,7 +286,7 @@ export default {
       this.$_loop();
     });
   },
-  beforeDestroy() {
+  beforeUnmount() {
       window.removeEventListener('resize', this.onResize);
   }
 };

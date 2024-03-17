@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const { VueLoaderPlugin } = require('vue-loader');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
@@ -28,7 +28,14 @@ module.exports = {
             },
             {
                 test: /\.vue$/,
-                use: 'vue-loader'
+                loader: 'vue-loader',
+                options: {
+                    compilerOptions: {
+                      compatConfig: {
+                        MODE: 2
+                      }
+                    }
+                }
             },
             {
                 test: /\.js$/,
@@ -63,7 +70,7 @@ module.exports = {
     ],
     resolve: {
         alias: {
-            'vue$': 'vue/dist/vue.runtime.esm.js',
+            'vue': '@vue/compat',
         }
     },
 }

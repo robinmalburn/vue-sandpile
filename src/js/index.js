@@ -1,11 +1,9 @@
 import "core-js";
-import Vue from 'vue';
+import { createApp } from 'vue';
 import store from './stores';
 import MainApp from './components/MainApp.vue';
 import '../css/app.css';
 
-new Vue({
-    el: '#app',
-    store,
-    render: h => h(MainApp)
-});
+const app = createApp(MainApp);
+app.use(store);
+app.mount('#app');
