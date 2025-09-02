@@ -1,76 +1,74 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { VueLoaderPlugin } = require('vue-loader');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { VueLoaderPlugin } = require("vue-loader");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
-const DIST_DIR = path.resolve(__dirname, 'dist');
+const DIST_DIR = path.resolve(__dirname, "dist");
 
 module.exports = {
-    entry: './src/js/index.js',
+    entry: "./src/js/index.js",
     output: {
-        filename: '[name].[chunkhash:4].js',
-        path: DIST_DIR
+        filename: "[name].[chunkhash:4].js",
+        path: DIST_DIR,
     },
-    devtool: 'inline-source-map',
+    devtool: "inline-source-map",
     devServer: {
-        host: 'local-ip',
+        host: "local-ipv4",
+        allowedHosts: "all",
         open: true,
-    },  
-    module:{
+    },
+    module: {
         rules: [
             {
                 test: /\.css$/,
-                use: [
-                  'vue-style-loader',
-                  'css-loader'
-                ]
+                use: ["vue-style-loader", "css-loader"],
             },
             {
                 test: /\.vue$/,
-                loader: 'vue-loader',
+                loader: "vue-loader",
                 options: {
                     compilerOptions: {
-                      compatConfig: {
-                        MODE: 2
-                      }
-                    }
-                }
+                        compatConfig: {
+                            MODE: 2,
+                        },
+                    },
+                },
             },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
-                  loader: 'babel-loader',
-                }
-              }
-        ]
+                    loader: "babel-loader",
+                },
+            },
+        ],
     },
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title: 'Vue Sandpile',
-            template: path.resolve(__dirname, 'src/index.html')
+            title: "Vue Sandpile",
+            template: path.resolve(__dirname, "src/index.html"),
         }),
         new CopyWebpackPlugin({
             patterns: [
                 {
-                    'from': '*.png',
-                    'to': DIST_DIR,
-                    'context': path.resolve(__dirname, 'src'),
+                    from: "*.png",
+                    to: DIST_DIR,
+                    context: path.resolve(__dirname, "src"),
                 },
                 {
-                    'from': '*.ico',
-                    'to': DIST_DIR,
-                    'context': path.resolve(__dirname, 'src'),
+                    from: "*.ico",
+                    to: DIST_DIR,
+                    context: path.resolve(__dirname, "src"),
                 },
-            ]
+            ],
         }),
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
     ],
     resolve: {
         alias: {
-            'vue': '@vue/compat',
-        }
+            vue: "@vue/compat",
+        },
     },
-}
+};
