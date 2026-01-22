@@ -1,28 +1,38 @@
 name: GH Pages
 
 on:
-  workflow_dispatch:
-  push:
-    branches:
-      - master
+    workflow_dispatch:
+    push:
+        branches:
+            - master
 
 permissions:
-  contents: write
+    contents: write
 
 jobs:
-  build-and-deploy:
-    concurrency: ci-${{ github.ref }} 
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout 
-        uses: actions/checkout@v3
+    build-and-deploy:
+        concurrency: ci-${{ github.ref }}
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v6.0.1
 
-      - name: Install and Build 
-        run: |
-          npm ci
-          npm run prod
+            - name: Set up Node JS 22
+              uses: actions/setup-node@v6.2.0
+              with:
+                  node-version: 22
+                  cache: npm
 
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: dist
+            - name: Install and Build
+              run: |
+                  npm ci
+                  npm run prod
+
+            - name: Stamp build
+              run: date -u +"%Y-%m-%dT%H:%M:%SZ" > dist/build.txt
+
+            - name: Deploy
+              uses: JamesIves/github-pages-deploy-action@v4.8.0
+              with:
+                  folder: dist
+                  clean: true
