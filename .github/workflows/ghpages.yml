@@ -17,16 +17,19 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v6.0.2
 
+            - name: Install pnpm
+              uses: pnpm/action-setup@v4.2.0
+
             - name: Set up Node JS 22
               uses: actions/setup-node@v6.2.0
               with:
-                  node-version: 22
-                  cache: npm
+                  node-version-file: ".nvmrc"
+                  cache: pnpm
 
             - name: Install and Build
               run: |
-                  npm ci
-                  npm run prod
+                  pnpm install --frozen-lockfile
+                  pnpm run prod
 
             - name: Stamp build
               run: date -u +"%Y-%m-%dT%H:%M:%SZ" > dist/build.txt
