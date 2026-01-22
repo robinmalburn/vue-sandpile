@@ -1,16 +1,15 @@
 <template>
     <div class="inline-container">
         <button class="btn btn-color-picker" @click="open = true" ref="button">
-            <span class="swatch" :style="{backgroundColor: value}"/>
-            <span class="text">{{value}}</span>
+            <span class="swatch" :style="{ backgroundColor: value }" />
+            <span class="text">{{ value }}</span>
         </button>
         <div v-show="open" class="popup">
-            <div class="popup-inner" :style="{top: `${y}px`, left:`${x}px`}">
-                
-                <Photoshop 
+            <div class="popup-inner" :style="{ top: `${y}px`, left: `${x}px` }">
+                <PhotoshopPicker
                     :value="color"
                     @cancel="cancel"
-                    @input="color = $event.hex"
+                    @input="color = $event"
                     @ok="choose"
                     :head="popupTitle"
                 />
@@ -20,7 +19,7 @@
 </template>
 
 <script>
-import { Photoshop } from 'vue-color';
+import { PhotoshopPicker } from "vue-color";
 export default {
     props: {
         value: {
@@ -30,7 +29,7 @@ export default {
         popupTitle: {
             type: String,
             required: true,
-        }
+        },
     },
     data() {
         return {
@@ -38,10 +37,10 @@ export default {
             color: this.value,
             x: 0,
             y: 0,
-        }
+        };
     },
     components: {
-        Photoshop,
+        PhotoshopPicker,
     },
     methods: {
         cancel() {
@@ -50,35 +49,37 @@ export default {
         },
         choose() {
             this.open = false;
-            this.$emit('change', this.color);
-        }
+            this.$emit("change", this.color);
+        },
     },
     watch: {
         open(value) {
             if (value) {
                 this.x = this.$refs.button.getBoundingClientRect().left;
-                this.y = this.$refs.button.getBoundingClientRect().top - this.$refs.button.clientHeight;
+                this.y =
+                    this.$refs.button.getBoundingClientRect().top -
+                    this.$refs.button.clientHeight;
             }
         },
     },
-}
+};
 </script>
 
 <style scoped>
-  .btn-color-picker .text{
-      display: inline-block;
-      min-width: 60px;
-  }
+.btn-color-picker .text {
+    display: inline-block;
+    min-width: 60px;
+}
 
-  .btn-color-picker .swatch{
-      display: inline-block;
-      width: 12px;
-      height: 12px;
-      border-radius: 8px;
-      border: 1px solid grey;
-  }
+.btn-color-picker .swatch {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 8px;
+    border: 1px solid grey;
+}
 
-  .popup{
+.popup {
     position: fixed;
     z-index: 100;
     top: 0;
@@ -86,10 +87,10 @@ export default {
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.4);
-  }
+}
 
-  .popup-inner{
-      position: absolute;
-      z-index: 100;
-  }
+.popup-inner {
+    position: absolute;
+    z-index: 100;
+}
 </style>

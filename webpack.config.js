@@ -11,6 +11,7 @@ module.exports = {
     output: {
         filename: "[name].[chunkhash:4].js",
         path: DIST_DIR,
+        publicPath: "./",
     },
     devtool: "inline-source-map",
     devServer: {
