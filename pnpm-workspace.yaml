@@ -2,3 +2,4 @@ useNodeVersion: "22.22.0"
 
 onlyBuiltDependencies:
     - core-js
+    - esbuild
