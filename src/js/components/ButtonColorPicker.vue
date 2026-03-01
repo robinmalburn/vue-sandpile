@@ -1,17 +1,17 @@
 <template>
     <div class="inline-container">
-        <button class="btn btn-color-picker" @click="open = true" ref="button">
+        <button class="btn btn-color-picker" @click="openPicker" ref="button">
             <span class="swatch" :style="{ backgroundColor: value }" />
             <span class="text">{{ value }}</span>
         </button>
-        <div v-show="open" class="popup">
+        <div v-show="open" class="popup" @click.self="cancel">
             <div class="popup-inner" :style="{ top: `${y}px`, left: `${x}px` }">
                 <PhotoshopPicker
-                    :value="color"
-                    @cancel="cancel"
-                    @input="color = $event"
+                    v-model="color"
+                    :currentColor="value"
+                    :title="popupTitle"
                     @ok="choose"
-                    :head="popupTitle"
+                    @cancel="cancel"
                 />
             </div>
         </div>
@@ -21,6 +21,9 @@
 <script>
 import { PhotoshopPicker } from "vue-color";
 export default {
+    components: {
+        PhotoshopPicker,
+    },
     props: {
         value: {
             type: String,
@@ -39,10 +42,15 @@ export default {
             y: 0,
         };
     },
-    components: {
-        PhotoshopPicker,
-    },
     methods: {
+        openPicker() {
+            this.color = this.value;
+            this.x = this.$refs.button.getBoundingClientRect().left;
+            this.y =
+                this.$refs.button.getBoundingClientRect().top -
+                this.$refs.button.clientHeight;
+            this.open = true;
+        },
         cancel() {
             this.color = this.value;
             this.open = false;
@@ -50,16 +58,6 @@ export default {
         choose() {
             this.open = false;
             this.$emit("change", this.color);
-        },
-    },
-    watch: {
-        open(value) {
-            if (value) {
-                this.x = this.$refs.button.getBoundingClientRect().left;
-                this.y =
-                    this.$refs.button.getBoundingClientRect().top -
-                    this.$refs.button.clientHeight;
-            }
         },
     },
 };

@@ -1,15 +1,4 @@
-import { createStore } from 'vuex';
-import heatmap from './heatmap';
-import canvas from './canvas';
-import sand from './sand';
-
-const store = createStore({
-    strict: process.env.NODE_ENV !== 'production',
-    modules: {
-        canvas,
-        heatmap,
-        sand
-    }
-});
-
-export default store;
+export { createPinia } from 'pinia';
+export { useCanvasStore } from './canvas';
+export { useHeatmapStore } from './heatmap';
+export { useSandStore } from './sand';

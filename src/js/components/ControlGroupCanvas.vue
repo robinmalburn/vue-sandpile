@@ -2,18 +2,35 @@
     <ControlGroup legend="Canvas" @reset="resetDimensions">
         <div>
             <div>
-                <label>Resolution ({{resolution}}px <span v-html="'&#215;'"></span> {{resolution}}px)</label>
+                <label
+                    >Resolution ({{ resolution }}px
+                    <span v-html="'&#215;'"></span> {{ resolution }}px)</label
+                >
             </div>
             <div>
-                <input type="range" :value="resolution" @input="setResolution($event.target.value)" :min="minResolution" :max="maxResolution" step="1"/>
+                <input
+                    type="range"
+                    :value="resolution"
+                    @input="setResolution($event.target.value)"
+                    :min="minResolution"
+                    :max="maxResolution"
+                    step="1"
+                />
             </div>
         </div>
         <div>
             <div>
-                <label>Width ({{cols }} Cols)</label>
+                <label>Width ({{ cols }} Cols)</label>
             </div>
             <div>
-                <input type="range" :value="width" @input="setWidth($event.target.value)" :min="minWidth" :max="maxWidth" :step="resolution" />
+                <input
+                    type="range"
+                    :value="width"
+                    @input="setWidth($event.target.value)"
+                    :min="minWidth"
+                    :max="maxWidth"
+                    :step="resolution"
+                />
             </div>
         </div>
         <div>
@@ -21,23 +38,33 @@
                 <label>Height ({{ rows }} Rows)</label>
             </div>
             <div>
-                <input type="range"  :value="height" @input="setHeight($event.target.value)" :min="minHeight" :max="maxHeight" :step="resolution" />
+                <input
+                    type="range"
+                    :value="height"
+                    @input="setHeight($event.target.value)"
+                    :min="minHeight"
+                    :max="maxHeight"
+                    :step="resolution"
+                />
             </div>
         </div>
     </ControlGroup>
 </template>
 
 <script>
-import ControlGroup from './ControlGroup.vue';
-import {mapState, mapGetters, mapMutations} from 'vuex';
+import ControlGroup from "./ControlGroup.vue";
+import { mapState, mapActions } from "pinia";
+import { useCanvasStore } from "../stores/canvas";
 
 export default {
     components: {
         ControlGroup,
     },
     computed: {
-        ...mapState("canvas", ["width", "height", "resolution"]),
-        ...mapGetters("canvas", [
+        ...mapState(useCanvasStore, [
+            "width",
+            "height",
+            "resolution",
             "minWidth",
             "maxWidth",
             "minHeight",
@@ -45,14 +72,14 @@ export default {
             "minResolution",
             "maxResolution",
             "cols",
-            "rows"
+            "rows",
         ]),
     },
-    methods: mapMutations("canvas", [
+    methods: mapActions(useCanvasStore, [
         "setHeight",
         "setWidth",
         "setResolution",
-        "resetDimensions"
+        "resetDimensions",
     ]),
-}
+};
 </script>

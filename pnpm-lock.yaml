@@ -8,21 +8,15 @@ importers:
 
   .:
     dependencies:
-      '@vue/compat':
-        specifier: ^3.5.29
-        version: 3.5.29(vue@3.5.29)
-      core-js:
-        specifier: ^3.48.0
-        version: 3.48.0
+      pinia:
+        specifier: ^2.3.1
+        version: 2.3.1(vue@3.5.29)
       vue:
         specifier: ^3.5.29
         version: 3.5.29
       vue-color:
         specifier: ^3.3.3
         version: 3.3.3(vue@3.5.29)
-      vuex:
-        specifier: ^4.1.0
-        version: 4.1.0(vue@3.5.29)
     devDependencies:
       '@vitejs/plugin-vue':
         specifier: ^5.0.0
@@ -376,11 +370,6 @@ packages:
       vite: ^5.0.0 || ^6.0.0
       vue: ^3.2.25
 
-  '@vue/compat@3.5.29':
-    resolution: {integrity: sha512-pqH27DJ74Fb6ZS3YswRDidpzDA9JytJLkwaC4OUPITejvaJH7WzWskPIizqnVA0Sgm4H6i8u2CxH7MAXkzz3Ng==}
-    peerDependencies:
-      vue: 3.5.29
-
   '@vue/compiler-core@3.5.29':
     resolution: {integrity: sha512-cuzPhD8fwRHk8IGfmYaR4eEe4cAyJEL66Ove/WZL7yWNL134nqLddSLwNRIsFlnnW1kK+p8Ck3viFnC0chXCXw==}
 
@@ -423,9 +412,6 @@ packages:
 
   commander@2.20.3:
     resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
-
-  core-js@3.48.0:
-    resolution: {integrity: sha512-zpEHTy1fjTMZCKLHUZoVeylt9XrzaIN2rbPXEt0k+q7JE5CkCZdo6bNq55bn24a69CH7ErAVLKijxJja4fw+UQ==}
 
   csstype@3.2.3:
     resolution: {integrity: sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ==}
@@ -473,6 +459,15 @@ packages:
   picomatch@4.0.3:
     resolution: {integrity: sha512-5gTmgEY/sqK6gFXLIsQNH19lWb4ebPDLA4SdLP7dsWkIXHWlG66oPuVvXSGFPppYZz8ZDZq0dYYrbHfBCVUb1Q==}
     engines: {node: '>=12'}
+
+  pinia@2.3.1:
+    resolution: {integrity: sha512-khUlZSwt9xXCaTbbxFYBKDc/bWAGWJjOgvxETwkTN7KRm66EeT1ZdZj6i2ceh9sP2Pzqsbc704r2yngBrxBVug==}
+    peerDependencies:
+      typescript: '>=4.4.4'
+      vue: ^2.7.0 || ^3.5.11
+    peerDependenciesMeta:
+      typescript:
+        optional: true
 
   postcss@8.5.6:
     resolution: {integrity: sha512-3Ybi1tAuwAP9s0r1UQ2J4n5Y0G05bJkpUIO0/bI9MhwmD70S5aTWbXGBwxHrelT+XM1k6dM0pk+SwNkpTRN7Pg==}
@@ -554,6 +549,17 @@ packages:
     peerDependencies:
       vue: '>=2.7.0 <4.0.0'
 
+  vue-demi@0.14.10:
+    resolution: {integrity: sha512-nMZBOwuzabUO0nLgIcc6rycZEebF6eeUfaiQx9+WSk8e29IbLvPU9feI6tqW4kTo3hvoYAJkMh8n8D0fuISphg==}
+    engines: {node: '>=12'}
+    hasBin: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+
   vue@3.5.29:
     resolution: {integrity: sha512-BZqN4Ze6mDQVNAni0IHeMJ5mwr8VAJ3MQC9FmprRhcBYENw+wOAAjRj8jfmN6FLl0j96OXbR+CjWhmAmM+QGnA==}
     peerDependencies:
@@ -561,11 +567,6 @@ packages:
     peerDependenciesMeta:
       typescript:
         optional: true
-
-  vuex@4.1.0:
-    resolution: {integrity: sha512-hmV6UerDrPcgbSy9ORAtNXDr9M4wlNP4pEFKye4ujJF8oqgFFuxDCdOLS3eNoRTtq5O3hoBDh9Doj1bQMYHRbQ==}
-    peerDependencies:
-      vue: ^3.2.0
 
 snapshots:
 
@@ -770,13 +771,6 @@ snapshots:
       vite: 6.4.1(@types/node@25.3.3)(terser@5.46.0)
       vue: 3.5.29
 
-  '@vue/compat@3.5.29(vue@3.5.29)':
-    dependencies:
-      '@babel/parser': 7.29.0
-      estree-walker: 2.0.2
-      source-map-js: 1.2.1
-      vue: 3.5.29
-
   '@vue/compiler-core@3.5.29':
     dependencies:
       '@babel/parser': 7.29.0
@@ -842,8 +836,6 @@ snapshots:
   commander@2.20.3:
     optional: true
 
-  core-js@3.48.0: {}
-
   csstype@3.2.3: {}
 
   entities@7.0.1: {}
@@ -897,6 +889,14 @@ snapshots:
   picocolors@1.1.1: {}
 
   picomatch@4.0.3: {}
+
+  pinia@2.3.1(vue@3.5.29):
+    dependencies:
+      '@vue/devtools-api': 6.6.4
+      vue: 3.5.29
+      vue-demi: 0.14.10(vue@3.5.29)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
 
   postcss@8.5.6:
     dependencies:
@@ -983,6 +983,10 @@ snapshots:
       tinycolor2: 1.6.0
       vue: 3.5.29
 
+  vue-demi@0.14.10(vue@3.5.29):
+    dependencies:
+      vue: 3.5.29
+
   vue@3.5.29:
     dependencies:
       '@vue/compiler-dom': 3.5.29
@@ -990,8 +994,3 @@ snapshots:
       '@vue/runtime-dom': 3.5.29
       '@vue/server-renderer': 3.5.29(vue@3.5.29)
       '@vue/shared': 3.5.29
-
-  vuex@4.1.0(vue@3.5.29):
-    dependencies:
-      '@vue/devtools-api': 6.6.4
-      vue: 3.5.29

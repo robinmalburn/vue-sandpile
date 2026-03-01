@@ -14,7 +14,14 @@
                 <label>Base Sand ({{ baseSand }})</label>
             </div>
             <div>
-                <input type="range" :value="baseSand" @input="setBaseSand($event.target.value)" min="0" max="4" step="1" />
+                <input
+                    type="range"
+                    :value="baseSand"
+                    @input="setBaseSand($event.target.value)"
+                    min="0"
+                    max="4"
+                    step="1"
+                />
             </div>
         </div>
 
@@ -23,30 +30,42 @@
                 <label>Starting Sand ({{ startingSand }})</label>
             </div>
             <div>
-                <input type="range" :value="startingSand" @input="setStartingSand($event.target.value)" min="100" max="100000" step="100" />
+                <input
+                    type="range"
+                    :value="startingSand"
+                    @input="setStartingSand($event.target.value)"
+                    min="100"
+                    max="100000"
+                    step="100"
+                />
             </div>
         </div>
     </ControlGroup>
 </template>
 
 <script>
-import ControlGroup from './ControlGroup.vue';
-import {mapState, mapGetters, mapMutations} from 'vuex';
+import ControlGroup from "./ControlGroup.vue";
+import { mapState, mapActions } from "pinia";
+import { useSandStore } from "../stores/sand";
 
 export default {
     components: {
         ControlGroup,
     },
     computed: {
-        ...mapState("sand", ["baseSand", "startingSand", "sand"]),
-        ...mapGetters("sand", ["sandTotal"]),
+        ...mapState(useSandStore, [
+            "baseSand",
+            "startingSand",
+            "sand",
+            "sandTotal",
+        ]),
     },
-    methods: mapMutations("sand", [
-      "setBaseSand",
-      "setStartingSand",
-      "resetSand",
-      "setSand",
-      "updateSand"
+    methods: mapActions(useSandStore, [
+        "setBaseSand",
+        "setStartingSand",
+        "resetSand",
+        "setSand",
+        "updateSand",
     ]),
-}
+};
 </script>

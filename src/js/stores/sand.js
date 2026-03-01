@@ -1,30 +1,37 @@
+import { defineStore } from "pinia";
+
 const INITIAL_STATE = {
     baseSand: 0,
     startingSand: 1000,
 };
 
-const state = () => ({
-    ...INITIAL_STATE,
-    sand: [],
-});
-
-const mutations = {
-    setBaseSand: (state, amount) => state.baseSand = parseInt(amount, 10),
-    setStartingSand: (state, amount) => state.startingSand = parseInt(amount, 10),
-    resetSand: state => Object.keys(INITIAL_STATE).forEach(key => {
-        state[key] = INITIAL_STATE[key];
+export const useSandStore = defineStore("sand", {
+    state: () => ({
+        ...INITIAL_STATE,
+        sand: [],
     }),
-    setSand: (state, sand) => state.sand = sand,
-    updateSand: (state, {idx, amount}) => state.sand.splice(idx, 1, amount),
-};
 
-const getters = {
-    sandTotal: state => state.sand.reduce((acc, val) => acc + val, 0),
-}
+    getters: {
+        sandTotal: (state) => state.sand.reduce((acc, val) => acc + val, 0),
+    },
 
-export default {
-    namespaced: true,
-    state,
-    mutations,
-    getters,
-}
+    actions: {
+        setBaseSand(amount) {
+            this.baseSand = parseInt(amount, 10);
+        },
+        setStartingSand(amount) {
+            this.startingSand = parseInt(amount, 10);
+        },
+        resetSand() {
+            Object.keys(INITIAL_STATE).forEach((key) => {
+                this[key] = INITIAL_STATE[key];
+            });
+        },
+        setSand(sand) {
+            this.sand = sand;
+        },
+        updateSand({ idx, amount }) {
+            this.sand.splice(idx, 1, amount);
+        },
+    },
+});
