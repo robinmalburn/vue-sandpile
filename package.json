@@ -20,9 +20,9 @@
     "author": "Robin Malburn <robin.malburn@googlemail.com>",
     "license": "MIT",
     "dependencies": {
-        "@vue/compat": "^3.5.28",
+        "@vue/compat": "^3.5.29",
         "core-js": "^3.48.0",
-        "vue": "^3.5.28",
+        "vue": "^3.5.29",
         "vue-color": "^3.3.3",
         "vuex": "^4.1.0"
     },
