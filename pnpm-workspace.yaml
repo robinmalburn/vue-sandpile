@@ -1,4 +1,6 @@
-useNodeVersion: "22.22.0"
+ignoredBuiltDependencies:
+  - vue-demi
 
 onlyBuiltDependencies:
-    - esbuild
+  - esbuild
+useNodeVersion: "22.22.0"
