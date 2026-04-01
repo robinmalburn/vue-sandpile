@@ -1,5 +1,4 @@
-ignoredBuiltDependencies:
-  - vue-demi
+minimumReleaseAge: 1
 
 onlyBuiltDependencies:
   - esbuild
