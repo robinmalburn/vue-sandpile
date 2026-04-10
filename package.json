@@ -21,13 +21,13 @@
     "license": "MIT",
     "dependencies": {
         "pinia": "^3.0.4",
-        "vue": "^3.5.31",
+        "vue": "^3.5.32",
         "vue-color": "^3.3.3"
     },
     "devDependencies": {
         "@vitejs/plugin-vue": "^6.0.5",
-        "@vue/compiler-sfc": "^3.5.31",
-        "vite": "^8.0.3"
+        "@vue/compiler-sfc": "^3.5.32",
+        "vite": "^8.0.8"
     },
     "engines": {
         "node": ">=22 <23"
