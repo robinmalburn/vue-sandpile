@@ -20,7 +20,7 @@
     "author": "Robin Malburn <robin.malburn@googlemail.com>",
     "license": "MIT",
     "dependencies": {
-        "pinia": "^3.0.4",
+        "pinia": "^4.0.2",
         "vue": "^3.5.40",
         "vue-color": "^3.3.3"
     },
