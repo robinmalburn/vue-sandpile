@@ -2,4 +2,3 @@ minimumReleaseAge: 1440
 
 onlyBuiltDependencies:
   - esbuild
-useNodeVersion: "22.22.0"

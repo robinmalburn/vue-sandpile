@@ -20,19 +20,19 @@
     "author": "Robin Malburn <robin.malburn@googlemail.com>",
     "license": "MIT",
     "dependencies": {
-        "pinia": "^4.0.2",
-        "vue": "^3.5.40",
+        "pinia": "^4.0.3",
+        "vue": "^3.5.42",
         "vue-color": "^3.3.3"
     },
     "devDependencies": {
         "@vitejs/plugin-vue": "^6.0.8",
-        "@vue/compiler-sfc": "^3.5.40",
-        "vite": "^8.2.0"
+        "@vue/compiler-sfc": "^3.5.42",
+        "vite": "^8.2.2"
     },
     "engines": {
         "runtime": {
             "name": "node",
-            "version": "^24.19.0",
+            "version": "^24.20.0",
             "onFail": "download"
         }
     },
