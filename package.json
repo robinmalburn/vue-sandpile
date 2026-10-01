@@ -21,18 +21,18 @@
     "license": "MIT",
     "dependencies": {
         "pinia": "^4.0.3",
-        "vue": "^3.5.42",
+        "vue": "^3.5.43",
         "vue-color": "^3.3.3"
     },
     "devDependencies": {
-        "@vitejs/plugin-vue": "^6.0.8",
-        "@vue/compiler-sfc": "^3.5.42",
-        "vite": "^8.2.2"
+        "@vitejs/plugin-vue": "^6.0.9",
+        "@vue/compiler-sfc": "^3.5.43",
+        "vite": "^8.3.1"
     },
     "engines": {
         "runtime": {
             "name": "node",
-            "version": "^24.20.0",
+            "version": "^24.21.0",
             "onFail": "download"
         }
     },
@@ -44,7 +44,7 @@
         },
         "packageManager": {
             "name": "pnpm",
-            "version": "11.19.0",
+            "version": "12.8.1",
             "onFail": "warn"
         }
     }
